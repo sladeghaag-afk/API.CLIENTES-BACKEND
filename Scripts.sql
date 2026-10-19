@@ -1,0 +1,6 @@
+﻿CREATE TABLE CLIENTES (
+      ID                UNIQUEIDENTIFIER          PRIMARY KEY,
+      NOME              VARCHAR (150)             NOT NULL,
+      EMAIL             VARCHAR (100)             NOT NULL,
+      CPF               VARCHAR (14)              NOT NULL,
+      DATACADASTRO      DATETIME                  DEFAULT GETDATE ());
