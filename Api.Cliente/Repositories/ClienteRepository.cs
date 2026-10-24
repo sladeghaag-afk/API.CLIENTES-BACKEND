@@ -14,7 +14,7 @@ public class ClienteRepository(string connectionString)
         var sql = """
             
                  INSERT INTO CLIENTES (ID, NOME, EMAIL, CPF, DATACADASTRO)
-                 VALUES(@Id, @Email, @Cpf, @DataCadastro)
+                 VALUES(@Id, @Nome, @Email, @Cpf, @DataCadastro)
             
             """;
         using (var connection = new SqlConnection(connectionString))
@@ -89,7 +89,7 @@ public class ClienteRepository(string connectionString)
         }
         
 
-
+        
     }
     public Cliente? ObterPorId(Guid Id)
     {
@@ -106,7 +106,7 @@ public class ClienteRepository(string connectionString)
 
         }
  
-
+        
     }
 
 

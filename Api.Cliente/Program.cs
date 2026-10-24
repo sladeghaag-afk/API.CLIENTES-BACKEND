@@ -1,5 +1,7 @@
 
 
+using Api.Cliente.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -20,6 +22,13 @@ builder.Services.AddSwaggerGen(options =>
     }); 
     
  });
+
+#endregion
+
+#region Injeção de dependência
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddScoped( map => new ClienteRepository(connectionString!));
 
 #endregion
 
