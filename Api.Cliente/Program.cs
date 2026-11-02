@@ -32,6 +32,28 @@ builder.Services.AddScoped( map => new ClienteRepository(connectionString!));
 
 #endregion
 
+#region Configuração do CORS
+
+var allowedOrigins = builder.Configuration
+                            .GetSection("Cors:AllowedOrigins")
+                            .Get<string[]>();
+
+builder.Services.AddCors(options =>
+ {
+
+     options.AddPolicy("CorsPolicy", policy =>
+     {
+         policy.WithOrigins(allowedOrigins!)
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+     });
+
+ });
+
+
+#endregion
+
+
 var app = builder.Build();
 
 
@@ -39,6 +61,7 @@ var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
+
 
 #endregion
 
@@ -50,6 +73,8 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
   
 }
+
+app.UseCors("CorsPolicy");
 
 app.UseAuthorization();
 

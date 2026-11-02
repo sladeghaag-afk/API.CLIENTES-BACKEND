@@ -6,7 +6,7 @@ using Microsoft.Data.SqlClient;
 
 public class ClienteRepository(string connectionString)
 {
-
+    
 
     public void Inserir(Cliente cliente)
 
