@@ -78,7 +78,7 @@ public class ClienteRepository(string connectionString)
         var sql = """
 
                 SELECT * FROM CLIENTES
-                ORDER BY NOMES
+                ORDER BY NOME
 
             """;
         using (var connection = new SqlConnection(connectionString)) 
